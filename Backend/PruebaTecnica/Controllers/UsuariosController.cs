@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PruebaTecnica.DTO;
 using PruebaTecnica.Models;
@@ -51,7 +52,7 @@ namespace PruebaTecnica.Controllers
             if (usuario != null)
             {
                 var token = _usuarioRepository.GenerateJwtToken(usuario);
-                return Ok(token);
+                return Ok(new { token = token, usuario = new { usuarioId = usuario.Id, nombreUsuario = usuario.NombreUsuario } });
             }
             else
             {

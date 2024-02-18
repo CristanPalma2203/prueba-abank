@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Establece la altura del contenedor al 100% de la altura de la ventana */
+}
+
+.card {
+    width: 300px;
+    /* Anchura de la tarjeta */
+}
+
+.card-header {
+    background-color: #007bff;
+    /* Color de fondo del encabezado de la tarjeta */
+    color: white;
+    /* Color del texto del encabezado de la tarjeta */
+}
+
+.card-body {
+    padding: 20px;
+    /* Relleno del cuerpo de la tarjeta */
+}

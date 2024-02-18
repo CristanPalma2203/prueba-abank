@@ -12,6 +12,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options => 
+    options.AddPolicy("Angular", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .AllowAnyHeader();
+    })
+ );
 // Configurar Database Context
 builder.Services.AddTransient<DatabaseContext>();
 builder.Services.AddTransient<EmpleadoRepository>();
@@ -25,6 +34,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseRouting();
+
+app.UseCors("Angular");
 
 app.UseHttpsRedirection();
 

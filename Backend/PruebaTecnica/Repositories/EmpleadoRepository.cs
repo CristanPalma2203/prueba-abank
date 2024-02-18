@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Npgsql;
 using PruebaTecnica.Data;
 using PruebaTecnica.DTO;
 using PruebaTecnica.Models;
@@ -46,10 +45,8 @@ namespace PruebaTecnica.Repositories
             parameters.Add("@p_Apellidos", empleado.Apellidos);
             parameters.Add("@p_Telefono", empleado.Telefono);
             parameters.Add("@p_Correo", empleado.Correo);
-            //parameters.Add("@p_FechaContratacion", empleado.FechaContratacion);
+            parameters.Add("@p_FechaContratacion", empleado.FechaContratacion);
             parameters.Add("@p_IdArea", empleado.IdArea);
-
-            // Definir el parámetro de salida
             parameters.Add("@p_EmpleadoId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             connection.Execute("CrearEmpleado", parameters, commandType: CommandType.StoredProcedure);
@@ -68,7 +65,7 @@ namespace PruebaTecnica.Repositories
             parameters.Add("@p_Apellidos", empleado.Apellidos);
             parameters.Add("@p_Telefono", empleado.Telefono);
             parameters.Add("@p_Correo", empleado.Correo);
-            //parameters.Add("@p_FechaContratacion", empleado.FechaContratacion);
+            parameters.Add("@p_FechaContratacion", empleado.FechaContratacion);
             parameters.Add("@p_IdArea", empleado.IdArea);
             connection.Query("public.EditarEmpleado", parameters, commandType: CommandType.StoredProcedure);
 
